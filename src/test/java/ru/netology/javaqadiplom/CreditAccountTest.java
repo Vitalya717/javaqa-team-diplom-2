@@ -242,4 +242,16 @@ public class CreditAccountTest {
             );
         });
     }
+    @Test
+    public void chargeInterestOnNegativeBalance_2() {
+        CreditAccount account = new CreditAccount(
+                0,  // начальный баланс
+                5000, //кредитный лимит
+                5 // Ставка
+        );
+        account.pay(70);
+        int expected = -3;
+        int actual = account.yearChange();
+        Assertions.assertEquals(expected, actual);
+    }
 }
